@@ -6,7 +6,14 @@ import { lusitana } from '@/app/ui/fonts';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
 import { fetchInvoicesPages } from '@/app/lib/data';
- 
+      //reasons for using URL search params:
+  // bookmark and shareble URLs - as its store applications 
+         // cuurrent state with search , queries and filters . 
+  // server-side rendering - it can be consumed directly from
+        // server site  to render initial state. 
+  // analytics and tracking - url already had search queries and filters . 
+        // so its easy to track user behavior without extra client-side logic .  
+
 export default async function Page(props: {
   searchParams?: Promise<{
     query?: string;
@@ -30,6 +37,7 @@ export default async function Page(props: {
       </Suspense>
       <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
+        {/* to navigate between pages of invoices */}
       </div>
     </div>
   );
